@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Store - متجر الكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* أنماط CSS العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e6e6e6;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* أنماط الرأس */
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #4cc9f0;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+        }
+
+        .logo span {
+            color: #f72585;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #e6e6e6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: #4cc9f0;
+            background: rgba(76, 201, 240, 0.1);
+        }
+
+        /* أنماط قسم البطل */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(76, 201, 240, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4cc9f0, #f72585);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #b8b8b8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #4cc9f0, #f72585);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 201, 240, 0.5);
+        }
+
+        /* أنماط قسم من نحن */
+        .about {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background: linear-gradient(135deg, #4cc9f0 0%, #f72585 100%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="white"/><circle cx="20" cy="20" r="1" fill="white"/><circle cx="80" cy="80" r="1" fill="white"/><circle cx="30" cy="70" r="1.5" fill="white"/><circle cx="70" cy="30" r="1.5" fill="white"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .store-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .about-image h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .about-image p {
+            font-size: 16px;
+            text-align: center;
+            max-width: 80%;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #4cc9f0;
+        }
+
+        .about p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #b8b8b8;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(to right, #4cc9f0, #f72585);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* أنماط قسم المنتجات */
+        .products {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #4cc9f0, #f72585);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b8b8b8;
+            font-size: 16px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #e6e6e6;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4cc9f0;
+            margin-bottom: 15px;
+        }
+
+        .product-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: rgba(76, 201, 240, 0.2);
+            color: #4cc9f0;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .product-button:hover {
+            background: rgba(76, 201, 240, 0.3);
+        }
+
+        /* أنماط قسم التواصل */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4cc9f0;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* أنماط الفوتر */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #4cc9f0;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #b8b8b8;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #4cc9f0;
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8b8b8;
+            font-size: 14px;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        /* تأثيرات التمرير السلس الإضافية */
+        .scroll-effect {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-effect.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #4cc9f0, #f72585);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #3ab0d9, #e01a6f);
+        }
+    </style>
+</head>
+<body>
+    <!-- الرأس -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Swift<span>Store</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="scroll-effect">مرحباً بكم في Swift Store</h1>
+            <p class="scroll-effect">اكتشف أحدث المنتجات بأفضل الأسعار. تسوق الآن واستمتع بتجربة شراء فريدة!</p>
+            <a href="#products" class="cta-button scroll-effect">تصفح المنتجات</a>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="scroll-effect">من نحن</h2>
+                    <p class="scroll-effect">مرحباً بكم في متجرنا الإلكتروني... حيث الجمال يبدأ من عندنا!</p>
+                    <p class="scroll-effect">نحن نحرص على تقديم أجود المنتجات إليكم بسرعة واحترافية. نفتخر بتوصيل مجاني بالكامل داخل مدينة آسفي، لأنكم جيراننا وأهلنا.</p>
+                    <p class="scroll-effect">لزبائننا الكرام خارج آسفي، تتوفر خدمة التوصيل مع تطبيق رسوم شحن مخفضة حسب المنطقة.</p>
+                    
+                    <div class="features">
+                        <h3 style="margin-bottom: 15px; color: #f72585;" class="scroll-effect">نضمن لكم:</h3>
+                        <div class="feature-item scroll-effect">
+                            <div class="feature-icon">✓</div>
+                            <span>جودة وسرعة التوصيل</span>
+                        </div>
+                        <div class="feature-item scroll-effect">
+                            <div class="feature-icon">✓</div>
+                            <span>منتجات مختارة بعناية</span>
+                        </div>
+                        <div class="feature-item scroll-effect">
+                            <div class="feature-icon">✓</div>
+                            <span>تعامل مميز وخدمة عملاء دائمة</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image scroll-effect">
+                    <i class="fas fa-shopping-bag store-icon"></i>
+                    <h3>Swift Store</h3>
+                    <p>تجربة تسوق استثنائية تبدأ من هنا</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title scroll-effect">منتجاتنا</h2>
+            <div class="products-grid">
+                <!-- منتج 1 -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <span>صورة المنتج 1</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">اسم المنتج 1</h3>
+                        <div class="product-price">$99.99</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- منتج 2 -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <span>صورة المنتج 2</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">اسم المنتج 2</h3>
+                        <div class="product-price">$79.99</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- منتج 3 -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <span>صورة المنتج 3</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">اسم المنتج 3</h3>
+                        <div class="product-price">$129.99</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- منتج 4 -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <span>صورة المنتج 4</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">اسم المنتج 4</h3>
+                        <div class="product-price">$59.99</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title scroll-effect">للتواصل والطلبات</h2>
+            <div class="contact-info scroll-effect">
+                <h3>اطلب عبر واتساب</h3>
+                <p>لطلب المنتجات أو الاستفسار، يمكنك التواصل معنا مباشرة عبر واتساب على الرقم:</p>
+                <p style="font-size: 22px; font-weight: 700; margin: 15px 0; color: #4cc9f0;">0644164199</p>
+                <p>نحن نعمل على تقديم أفضل خدمة لعملائنا ونتطلع لخدمتكم!</p>
+                <a href="https://wa.me/212644164199" class="whatsapp-button">تواصل معنا على واتساب</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section scroll-effect">
+                    <h3>Swift Store</h3>
+                    <p>متجر الكتروني يقدم أحدث المنتجات بأفضل الأسعار وجودة عالية.</p>
+                </div>
+                <div class="footer-section scroll-effect">
+                    <h3>روابط سريعة</h3>
+                    <a href="#home">الرئيسية</a>
+                    <a href="#about">من نحن</a>
+                    <a href="#products">المنتجات</a>
+                    <a href="#contact">اتصل بنا</a>
+                </div>
+                <div class="footer-section scroll-effect">
+                    <h3>معلومات الاتصال</h3>
+                    <p>واتساب: 0644164199</p>
+                    <p>البريد الإلكتروني: info@swiftstore.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Swift Store. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تفاعلية للأزرار
+        document.querySelectorAll('.product-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
+                
+                // رسالة جاهزة للواتساب
+                const message = `مرحباً، أريد طلب المنتج: ${productTitle} - ${productPrice}`;
+                const whatsappURL = `https://wa.me/212644164199?text=${encodeURIComponent(message)}`;
+                
+                // فتح رابط الواتساب
+                window.open(whatsappURL, '_blank');
+            });
+        });
+
+        // تأثير التمرير السلس للعناصر
+        const scrollElements = document.querySelectorAll('.scroll-effect');
+        
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('visible');
+        };
+        
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.2)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+        
+        // تهيئة العناصر المخفية
+        window.addEventListener('load', () => {
+            scrollElements.forEach((el) => {
+                hideScrollElement(el);
+            });
+            handleScrollAnimation();
+        });
+        
+        // التحقق من العناصر المرئية عند التمرير
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // تحسين التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80; // تعويض للرأس الثابت
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
