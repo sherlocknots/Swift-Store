@@ -219,8 +219,8 @@
             color: white;
         }
 
-        /* أنماط قسم المنتجات */
-        .products {
+        /* أنماط أقسام المنتجات */
+        .products-section {
             padding: 80px 0;
         }
 
@@ -274,6 +274,13 @@
             justify-content: center;
             color: #d8c7ff;
             font-size: 16px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-info {
@@ -482,7 +489,8 @@
                     <ul>
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#about">من نحن</a></li>
-                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#phones">الهواتف</a></li>
+                        <li><a href="#shoes">الأحذية</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
@@ -494,8 +502,8 @@
     <section class="hero" id="home">
         <div class="container">
             <h1 class="scroll-effect">مرحباً بكم في Swift Store</h1>
-            <p class="scroll-effect">اكتشف أحدث المنتجات بأفضل الأسعار. تسوق الآن واستمتع بتجربة شراء فريدة!</p>
-            <a href="#products" class="cta-button scroll-effect">تصفح المنتجات</a>
+            <p class="scroll-effect">اكتشف أحدث الهواتف والأحذية الرياضية بأفضل الأسعار. تسوق الآن واستمتع بتجربة شراء فريدة!</p>
+            <a href="#phones" class="cta-button scroll-effect">تصفح المنتجات</a>
         </div>
     </section>
 
@@ -534,55 +542,207 @@
         </div>
     </section>
 
-    <!-- قسم المنتجات -->
-    <section class="products" id="products">
+    <!-- قسم الهواتف -->
+    <section class="products-section" id="phones">
         <div class="container">
-            <h2 class="section-title scroll-effect">منتجاتنا</h2>
+            <h2 class="section-title scroll-effect">هواتف آيفون</h2>
             <div class="products-grid">
-                <!-- منتج 1 -->
+                <!-- آيفون 15 برو ماكس -->
                 <div class="product-card scroll-effect">
                     <div class="product-image">
-                        <span>صورة المنتج 1</span>
+                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=300&fit=crop" alt="iPhone 15 Pro Max">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">اسم المنتج 1</h3>
-                        <div class="product-price">$99.99</div>
+                        <h3 class="product-title">آيفون 15 برو ماكس</h3>
+                        <div class="product-price">5,499 درهم</div>
                         <button class="product-button">اطلب عبر واتساب</button>
                     </div>
                 </div>
 
-                <!-- منتج 2 -->
+                <!-- آيفون 15 برو -->
                 <div class="product-card scroll-effect">
                     <div class="product-image">
-                        <span>صورة المنتج 2</span>
+                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=300&fit=crop" alt="iPhone 15 Pro">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">اسم المنتج 2</h3>
-                        <div class="product-price">$79.99</div>
+                        <h3 class="product-title">آيفون 15 برو</h3>
+                        <div class="product-price">4,699 درهم</div>
                         <button class="product-button">اطلب عبر واتساب</button>
                     </div>
                 </div>
 
-                <!-- منتج 3 -->
+                <!-- آيفون 15 -->
                 <div class="product-card scroll-effect">
                     <div class="product-image">
-                        <span>صورة المنتج 3</span>
+                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=300&fit=crop" alt="iPhone 15">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">اسم المنتج 3</h3>
-                        <div class="product-price">$129.99</div>
+                        <h3 class="product-title">آيفون 15</h3>
+                        <div class="product-price">3,999 درهم</div>
                         <button class="product-button">اطلب عبر واتساب</button>
                     </div>
                 </div>
 
-                <!-- منتج 4 -->
+                <!-- آيفون 14 برو -->
                 <div class="product-card scroll-effect">
                     <div class="product-image">
-                        <span>صورة المنتج 4</span>
+                        <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?w=400&h=300&fit=crop" alt="iPhone 14 Pro">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">اسم المنتج 4</h3>
-                        <div class="product-price">$59.99</div>
+                        <h3 class="product-title">آيفون 14 برو</h3>
+                        <div class="product-price">4,299 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- آيفون 14 -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?w=400&h=300&fit=crop" alt="iPhone 14">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">آيفون 14</h3>
+                        <div class="product-price">3,599 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- آيفون 13 ميني -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1632661674591-2f7d7a16c8a5?w=400&h=300&fit=crop" alt="iPhone 13 Mini">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">آيفون 13 ميني</h3>
+                        <div class="product-price">1,999 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأحذية الرياضية -->
+    <section class="products-section" id="shoes">
+        <div class="container">
+            <h2 class="section-title scroll-effect">أحذية رياضية</h2>
+            <div class="products-grid">
+                <!-- حذاء نايكي الجري -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Nike Running Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">نايكي للجري</h3>
+                        <div class="product-price">450 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء أديداس -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop" alt="Adidas Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">أديداس ريترو</h3>
+                        <div class="product-price">380 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضة -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&h=300&fit=crop" alt="Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي مريح</h3>
+                        <div class="product-price">320 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء كرة قدم -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605346576608-92f1346b67d6?w=400&h=300&fit=crop" alt="Football Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء كرة قدم</h3>
+                        <div class="product-price">550 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي أسود -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=300&fit=crop" alt="Black Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي أسود</h3>
+                        <div class="product-price">420 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي أبيض -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop" alt="White Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي أبيض</h3>
+                        <div class="product-price">390 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي أزرق -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop" alt="Blue Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي أزرق</h3>
+                        <div class="product-price">410 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي أحمر -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=400&h=300&fit=crop" alt="Red Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي أحمر</h3>
+                        <div class="product-price">430 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي أخضر -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&h=300&fit=crop" alt="Green Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي أخضر</h3>
+                        <div class="product-price">400 درهم</div>
+                        <button class="product-button">اطلب عبر واتساب</button>
+                    </div>
+                </div>
+
+                <!-- حذاء رياضي بني -->
+                <div class="product-card scroll-effect">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=300&fit=crop" alt="Brown Sports Shoes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">حذاء رياضي بني</h3>
+                        <div class="product-price">370 درهم</div>
                         <button class="product-button">اطلب عبر واتساب</button>
                     </div>
                 </div>
@@ -610,13 +770,14 @@
             <div class="footer-content">
                 <div class="footer-section scroll-effect">
                     <h3>Swift Store</h3>
-                    <p>متجر الكتروني يقدم أحدث المنتجات بأفضل الأسعار وجودة عالية.</p>
+                    <p>متجر الكتروني يقدم أحدث الهواتف والأحذية الرياضية بأفضل الأسعار وجودة عالية.</p>
                 </div>
                 <div class="footer-section scroll-effect">
                     <h3>روابط سريعة</h3>
                     <a href="#home">الرئيسية</a>
                     <a href="#about">من نحن</a>
-                    <a href="#products">المنتجات</a>
+                    <a href="#phones">الهواتف</a>
+                    <a href="#shoes">الأحذية</a>
                     <a href="#contact">اتصل بنا</a>
                 </div>
                 <div class="footer-section scroll-effect">
@@ -639,7 +800,7 @@
                 const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
                 
                 // رسالة جاهزة للواتساب
-                const message = `مرحباً، أريد طلب المنتج: ${productTitle} - ${productPrice}`;
+                const message = `مرحباً، أريد طلب المنتج: ${productTitle} - السعر: ${productPrice}`;
                 const whatsappURL = `https://wa.me/212644164199?text=${encodeURIComponent(message)}`;
                 
                 // فتح رابط الواتساب
